@@ -72,4 +72,38 @@
     });
   });
 
+  $(document).on('click', '#apply_button', function(e){
+    $("#main_text").text($("#input_text").val());
+    setTextEvent();
+  });
+
+  $("#main_text").on('click mousedown touchdown', function(e){
+    var position = window.getSelection().focusOffset;
+    var text = $(this).text();
+    console.log(text[position]);
+    // aa[0].firstChild['splitText'](position)
+  });
+
 })(jQuery); // End of use strict
+
+// window.addEventListener('DOMContentLoaded', setTextEvent());
+//
+// function setTextEvent() {
+// document.querySelectorAll('#main_text').forEach(el => {
+//     let clean, cursor;
+//     el.addEventListener('click', e => {
+//         console.log("aaa");
+//         let position = window.getSelection().focusOffset;
+//         if (cursor && position > cursor)
+//             position--;
+//         if (clean)
+//             el['innerText'] = clean;
+//         let textnode = el.firstChild['splitText'](position);
+//         clean = textnode.wholeText;
+//         cursor = position;
+//         el.insertBefore(document.createTextNode('|'), textnode);
+//         el['innerText'] = textnode.wholeText;
+//     });
+// });
+// console.log("set event");
+// }

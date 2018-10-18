@@ -331,6 +331,13 @@ form .row:first-child .floating-label-form-group {
   color: #fff;
 }
 
+.main {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #2C3E50;
+  color: #fff;
+}
+
 .copyright {
   background-color: #1a252f;
 }
@@ -381,4 +388,11 @@ a:focus, a:hover, a:active {
 .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
   background-color: #1a252f;
   border-color: #1a252f;
+}
+
+.btn-wrapper
+{
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
