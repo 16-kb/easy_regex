@@ -1,3 +1,5 @@
+var referenceText;
+
 (function($) {
   "use strict"; // Start of use strict
 
@@ -49,44 +51,63 @@
   // Collapse the navbar when page is scrolled
   $(window).scroll(navbarCollapse);
 
-  // Modal popup$(function () {
-  $('.portfolio-item').magnificPopup({
-    type: 'inline',
-    preloader: false,
-    focus: '#username',
-    modal: true
-  });
-  $(document).on('click', '.portfolio-modal-dismiss', function(e) {
-    e.preventDefault();
-    $.magnificPopup.close();
+  // Apply input text to main text
+  $(document).on('click', '#append_button', function(e){
+    referenceText += "<br />"+$("#input_text").val();
+    applyText();
   });
 
-  // Floating label headings for the contact form
-  $(function() {
-    $("body").on("input propertychange", ".floating-label-form-group", function(e) {
-      $(this).toggleClass("floating-label-form-group-with-value", !!$(e.target).val());
-    }).on("focus", ".floating-label-form-group", function() {
-      $(this).addClass("floating-label-form-group-with-focus");
-    }).on("blur", ".floating-label-form-group", function() {
-      $(this).removeClass("floating-label-form-group-with-focus");
-    });
+  // Clear reference text
+  $(document).on('click', '#clear_button', function(e){
+    referenceText = "";
+    applyText();
   });
 
-  $(document).on('click', '#apply_button', function(e){
-    $("#main_text").text($("#input_text").val());
-    setTextEvent();
+  //
+  var currentSelectedLetters = "";
+  var currentText = "";
+
+  $("#main_text").on('mouseup touchend', function(e){
+    console.log(window.getSelection().toString());
+    currentSelectedLetters = window.getSelection().toString();
   });
 
-  $("#main_text").on('click mousedown touchdown', function(e){
-    var position = window.getSelection().focusOffset;
-    var text = $(this).text();
-    console.log(text[position]);
-    // aa[0].firstChild['splitText'](position)
-  });
+  function appendLetter(index)
+  {
+    if(!selectedIndex.includes(index))
+    {
+        selectedIndex.push(index);
+        var text = currentText[index];
+        if(text == null)
+        {
+          return;
+        }
+        currentSelectedLetters += text;
+    }
+  }
+
+  function initializeTouch(referenceText)
+  {
+    touchState = null;
+    currentSelectedLetters = "";
+    selectedIndex = [];
+    currentText = referenceText;
+  }
+
+  function applyText()
+  {
+    $("#main_text").html(referenceText);
+  }
 
 })(jQuery); // End of use strict
 
-// window.addEventListener('DOMContentLoaded', setTextEvent());
+
+window.addEventListener('DOMContentLoaded', initializeText());
+
+function initializeText()
+{
+  referenceText = document.querySelector("#main_text").innerHTML;
+}
 //
 // function setTextEvent() {
 // document.querySelectorAll('#main_text').forEach(el => {
