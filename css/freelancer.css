@@ -396,3 +396,43 @@ a:focus, a:hover, a:active {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
+.queryItem {
+    width: auto;
+    height: 24px;
+    line-height: 24px;
+    background-color: #fff;
+    border: 1px solid #e5e8ea;
+    border-radius: 12px;
+}
+
+.queryList .queryItem {
+    position: relative;
+    float: left;
+    list-style: none;
+    padding-left: 12px;
+    padding-right: 28px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+
+.queryItem label
+{
+  color: #000;
+}
+
+.queryContainer
+{
+  padding-bottom: 6rem;
+  position: relative;
+  margin-bottom: 8px;
+  z-index: 17;
+}
+
+.GridCell {
+    min-width: 1px;
+    box-sizing: border-box;
+    display: table-cell;
+    position: relative;
+    vertical-align: top;
+}

@@ -69,6 +69,8 @@ var referenceText;
 
   $("#main_text").on('mouseup touchend', function(e){
     console.log(window.getSelection().toString());
+    var item = createQueryItem(window.getSelection().toString());
+    $(".queryList").append(item);
     currentSelectedLetters = window.getSelection().toString();
   });
 
@@ -107,6 +109,14 @@ window.addEventListener('DOMContentLoaded', initializeText());
 function initializeText()
 {
   referenceText = document.querySelector("#main_text").innerHTML;
+}
+
+function createQueryItem(text)
+{
+  var item = document.createElement("li");
+  item.setAttribute("class", "queryItem");
+  item.textContent = text;
+  return item;
 }
 //
 // function setTextEvent() {
