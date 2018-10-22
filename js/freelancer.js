@@ -2,6 +2,8 @@ var referenceText;
 
 (function($) {
   "use strict"; // Start of use strict
+  var $whiteList = $("#whiteList");
+  var $blackList = $("#blackList");
 
   // Smooth scrolling using jQuery easing
   $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
@@ -61,6 +63,7 @@ var referenceText;
   $(document).on('click', '#clear_button', function(e){
     referenceText = "";
     applyText();
+    clearQueryList();
   });
 
   //
@@ -68,11 +71,26 @@ var referenceText;
   var currentText = "";
 
   $("#main_text").on('mouseup touchend', function(e){
-    console.log(window.getSelection().toString());
-    var item = createQueryItem(window.getSelection().toString());
-    $(".queryList").append(item);
-    currentSelectedLetters = window.getSelection().toString();
+    e.preventDefault();
+
+    var text = window.getSelection().toString();
+    if(!text || !text.replace(/\s/g, '').length)
+    {
+      return;
+    }
+
+    var item = createQueryItem(text);
+    $(item).find("i").on("click", function(e)
+    {
+      item.remove();
+    });
+    $whiteList
+    .append(item)
+    .sortable("refresh");
+    currentSelectedLetters = text;
   });
+  $whiteList.sortable({connectWith: "ul", dropOnEmpty: true});
+  $blackList.sortable({connectWith: "ul", dropOnEmpty: true});
 
   function appendLetter(index)
   {
@@ -101,6 +119,11 @@ var referenceText;
     $("#main_text").html(referenceText);
   }
 
+  function clearQueryList()
+  {
+    $(".queryList").empty();
+  }
+
 })(jQuery); // End of use strict
 
 
@@ -116,7 +139,15 @@ function createQueryItem(text)
   var item = document.createElement("li");
   item.setAttribute("class", "queryItem");
   item.textContent = text;
+  item.appendChild(createDeleteButton());
   return item;
+}
+
+function createDeleteButton()
+{
+  var button = document.createElement("i");
+  button.classList.add("fas", "fa-trash", "queryItemRemove");
+  return button;
 }
 //
 // function setTextEvent() {

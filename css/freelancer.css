@@ -350,6 +350,12 @@ a:focus, a:hover, a:active {
   color: #128f76;
 }
 
+p
+{
+  color: #fff;
+  font-size: 1rem;
+}
+
 .btn {
   border-width: 2px;
 }
@@ -406,6 +412,12 @@ a:focus, a:hover, a:active {
     border-radius: 12px;
 }
 
+.queryList
+{
+  width: 10000px;
+  height: inherit;
+}
+
 .queryList .queryItem {
     position: relative;
     float: left;
@@ -418,21 +430,41 @@ a:focus, a:hover, a:active {
 
 .queryItem label
 {
-  color: #000;
+  color: #2C3E50;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  bottom: 3px;
+}
+
+.queryItemRemove
+{
+  color: #2C3E50;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  bottom: 3px;
 }
 
 .queryContainer
 {
-  padding-bottom: 6rem;
+  padding-bottom: 4rem;
   position: relative;
   margin-bottom: 8px;
   z-index: 17;
+  text-align: center;
 }
 
-.GridCell {
-    min-width: 1px;
+.gridCell {
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-top: 15px;
     box-sizing: border-box;
-    display: table-cell;
+    display: flex;
     position: relative;
     vertical-align: top;
+    border: 3px dotted #666666;
+    min-height: 40px;
 }

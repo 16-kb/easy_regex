@@ -47,8 +47,15 @@
     </header>
 
     <div class="bg-primary queryContainer">
-      <div class="GridCell">
-        <ul class="queryList">
+      <p>Reference List</p>
+      <div class="gridCell">
+        <ul class="queryList" id="whiteList">
+        </ul>
+      </div>
+      <br>
+      <p>Exception List</p>
+      <div class="gridCell">
+        <ul class="queryList" id="blackList">
         </ul>
       </div>
     </div>
@@ -311,6 +318,7 @@
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
